@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PostsController!{% endblock %}
+
+{% block body %}
+{{parent()}}
+
+
+<div class="container bg-white rounded my-3 p-4">
+    <div class="d-flex bd-highlight">
+        <div class="p-2 flex-grow-1 bd-highlight">
+            <h3>{{post.titulo}}</h3>
+            <div class="my-3" style="color:#3282b8;" onClick="MeGusta({{post.id}})">
+                <i class="fa fa-thumbs-up"></i><strong> # Likes</strong>
+            </div>
+            <div style="color:#c3f584;">
+                <i class="far fa-clock"></i><strong>Fecha de publicación:{{post.fechapublicacion | date}}</strong>
+            </div>
+        </div>
+        <div class ="p-2 bd-highlight">
+            <div class="align-self-center">
+                <img class="rounded" src="{{asset('uploads/photos/')~post.foto}}" width="150px">
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="text-justify my-3">
+    Vivamus magnis habitasse ridiculus tristique sociosqu dapibus donec, imperdiet in volutpat eleifend pretium eros eu, id quis vestibulum consequat felis quam. Metus cras urna lectus ultrices nam penatibus arcu, mi placerat ante feugiat tincidunt euismod rhoncus mus, praesent fringilla quis viverra tempus id. Euismod nibh diam sed orci praesent dis dapibus eros, scelerisque habitant libero pharetra eleifend per viverra sociis, lacinia erat condimentum suspendisse aptent tempus nam.
+    </div>
+{% endblock %}
+{% block javascripts %}
+{{parent()}}
+<script src="{{ asset('bundles/fosjsrouting/js/router.min.js') }}"></script>
+<script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+<script src="{{ asset('js/ajax-call.js')}}"></script>
+{% endblock %}
